@@ -1,11 +1,11 @@
 <?php
 /**
-* phpBB Extension - marttiphpbb calendarinput
+* phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license GNU General Public License, version 2 (GPL-2.0)
 */
 
-namespace marttiphpbb\calendarinput\event;
+namespace marttiphpbb\calendarmono\event;
 
 use phpbb\auth\auth;
 use phpbb\config\config;
@@ -16,9 +16,9 @@ use phpbb\user;
 use phpbb\language\language;
 use phpbb\event\data as event;
 
-use marttiphpbb\calendarinput\render\include_assets;
-use marttiphpbb\calendarinput\render\input_range;
-use marttiphpbb\calendarinput\render\posting;
+use marttiphpbb\calendarmono\render\include_assets;
+use marttiphpbb\calendarmono\render\input_range;
+use marttiphpbb\calendarmono\render\posting;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class posting_listener implements EventSubscriberInterface
@@ -99,44 +99,44 @@ class posting_listener implements EventSubscriberInterface
 
 		$error = ['error'];
 
-		$post_data['topic_calendarinput_start'] = $this->request->variable('calendarinput_date_start', '');
-		$post_data['topic_calendarinput_end'] = $this->request->variable('calendarinput_date_end', '');
+		$post_data['topic_calendarmono_start'] = $this->request->variable('calendarmono_date_start', '');
+		$post_data['topic_calendarmono_end'] = $this->request->variable('calendarmono_date_end', '');
 
 		$event['post_data'] = $post_data;
 
 		return;
 
-		if (substr_count($post_data['topic_calendarinput_start'], '-') == 2)
+		if (substr_count($post_data['topic_calendarmono_start'], '-') == 2)
 		{
-			list($start_year, $start_month, $start_day) = explode('-', $post_data['topic_calendarinput_start']);
+			list($start_year, $start_month, $start_day) = explode('-', $post_data['topic_calendarmono_start']);
 
 			if (!checkdate($start_month, $start_day, $start_year))
 			{
-				$error[] = $this->language->lang('CALENDARINPUT_START_DATE_ERROR');
+				$error[] = $this->language->lang('CALENDARMONO_START_DATE_ERROR');
 			}
 		}
 		else
 		{
-			$error[] = $this->language->lang('CALENDARINPUT_START_DATE_ERROR');
+			$error[] = $this->language->lang('CALENDARMONO_START_DATE_ERROR');
 		}
 
-		if (substr_count($post_data['topic_calendarinput_end'], '-') == 2)
+		if (substr_count($post_data['topic_calendarmono_end'], '-') == 2)
 		{
-			list($end_year, $end_month, $end_day) = explode('-', $post_data['topic_calendarinput_end']);
+			list($end_year, $end_month, $end_day) = explode('-', $post_data['topic_calendarmono_end']);
 
 			if (!checkdate($end_month, $end_day, $end_year))
 			{
-				$error[] = $this->language->lang('CALENDARINPUT_END_DATE_ERROR');
+				$error[] = $this->language->lang('CALENDARMONO_END_DATE_ERROR');
 			}
 		}
 		else
 		{
-			$error[] = $this->language->lang('CALENDARINPUT_END_DATE_ERROR');
+			$error[] = $this->language->lang('CALENDARMONO_END_DATE_ERROR');
 		}
 
 /*
-		$post_data['topic_calendarinput_start'] = gmmktime(12, 0, 0, $start_month, $start_day, $start_year);
-		$post_data['topic_calendarinput_end'] = gmmktime(12, 0, 0, $end_month, $end_day, $end_year);
+		$post_data['topic_calendarmono_start'] = gmmktime(12, 0, 0, $start_month, $start_day, $start_year);
+		$post_data['topic_calendarmono_end'] = gmmktime(12, 0, 0, $end_month, $end_day, $end_year);
 */
 		$event['error'] = $error;
 		$event['post_data'] = $post_data;
@@ -156,14 +156,14 @@ class posting_listener implements EventSubscriberInterface
 
 // todo: checking according to settings
 
-		list($start_year, $start_month, $start_day) = explode('-', $post_data['topic_calendarinput_start']);
-		list($end_year, $end_month, $end_day) = explode('-', $post_data['topic_calendarinput_end']);
+		list($start_year, $start_month, $start_day) = explode('-', $post_data['topic_calendarmono_start']);
+		list($end_year, $end_month, $end_day) = explode('-', $post_data['topic_calendarmono_end']);
 
 		$start = gmmktime(12, 0, 0, $start_month, $start_day, $start_year);
 		$end = gmmktime(12, 0, 0, $end_month, $end_day, $end_year);
 
-		$data['topic_calendarinput_start'] = $start;
-		$data['topic_calendarinput_end'] = $end;
+		$data['topic_calendarmono_start'] = $start;
+		$data['topic_calendarmono_end'] = $end;
 
 		$event['data'] = $data;
 	}
@@ -194,7 +194,7 @@ class posting_listener implements EventSubscriberInterface
 		$this->posting->assign_template_vars($event['forum_id'], $post_data);
 		$this->include_assets->assign_template_vars();
 		$this->input_range->assign_template_vars();
-		$this->language->add_lang('posting', 'marttiphpbb/calendarinput');
+		$this->language->add_lang('posting', 'marttiphpbb/calendarmono');
 	}
 
 	public function submit_post_modify_sql_data(event $event)
@@ -202,8 +202,8 @@ class posting_listener implements EventSubscriberInterface
 		$sql_data = $event['sql_data'];
 		$data = $event['data'];
 
-		$sql_data[TOPICS_TABLE]['sql']['topic_calendarinput_start'] = $data['topic_calendarinput_start'];
-		$sql_data[TOPICS_TABLE]['sql']['topic_calendarinput_end'] = $data['topic_calendarinput_end'];
+		$sql_data[TOPICS_TABLE]['sql']['topic_calendarmono_start'] = $data['topic_calendarmono_start'];
+		$sql_data[TOPICS_TABLE]['sql']['topic_calendarmono_end'] = $data['topic_calendarmono_end'];
 
 		$event['sql_data'] = $sql_data;
 	}

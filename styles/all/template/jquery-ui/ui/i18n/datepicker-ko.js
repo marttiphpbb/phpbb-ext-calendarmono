@@ -1,4 +1,4 @@
-/* Korean initialisation for the jQuery calendarinput extension. */
+/* Korean initialisation for the jQuery calendarmono extension. */
 /* Written by DaeKwon Kang (ncrash.dk@gmail.com), Edited by Genie. */
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {

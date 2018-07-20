@@ -1,15 +1,15 @@
 <?php
 /**
-* phpBB Extension - marttiphpbb calendarinput
+* phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license GNU General Public License, version 2 (GPL-2.0)
 */
 
-namespace marttiphpbb\calendarinput\render;
+namespace marttiphpbb\calendarmono\render;
 
 use phpbb\template\template;
 use phpbb\language\language;
-use marttiphpbb\calendarinput\repository\settings;
+use marttiphpbb\calendarmono\repository\settings;
 
 class posting
 {
@@ -52,11 +52,11 @@ class posting
 		}
 
 		$this->template->assign_vars([
-			'S_CALENDARINPUT_INPUT'				=> true,
-			'S_CALENDARINPUT_REQUIRED'			=> $this->settings->get_required($forum_id),
-			'CALENDARINPUT_DATE_FORMAT'			=> 'yyyy-mm-dd',
-			'CALENDARINPUT_DATE_START'			=> isset($post_data['topic_calendarinput_start']) ? gmdate('Y-m-d', $post_data['topic_calendarinput_start']) : '', 
-			'CALENDARINPUT_DATE_END'			=> isset($post_data['topic_calendarinput_end']) ? gmdate('Y-m-d', $post_data['topic_calendarinput_end']) : '',
+			'S_CALENDARMONO_INPUT'				=> true,
+			'S_CALENDARMONO_REQUIRED'			=> $this->settings->get_required($forum_id),
+			'CALENDARMONO_DATE_FORMAT'			=> 'yyyy-mm-dd',
+			'CALENDARMONO_DATE_START'			=> isset($post_data['topic_calendarmono_start']) ? gmdate('Y-m-d', $post_data['topic_calendarmono_start']) : '', 
+			'CALENDARMONO_DATE_END'			=> isset($post_data['topic_calendarmono_end']) ? gmdate('Y-m-d', $post_data['topic_calendarmono_end']) : '',
 		]);
 	}
 }

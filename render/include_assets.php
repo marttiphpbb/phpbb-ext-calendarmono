@@ -1,15 +1,15 @@
 <?php
 /**
-* phpBB Extension - marttiphpbb calendarinput
+* phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license GNU General Public License, version 2 (GPL-2.0)
 */
 
-namespace marttiphpbb\calendarinput\render;
+namespace marttiphpbb\calendarmono\render;
 
 use phpbb\template\template;
 use phpbb\language\language;
-use marttiphpbb\calendarinput\repository\settings;
+use marttiphpbb\calendarmono\repository\settings;
 
 class include_assets
 {
@@ -26,7 +26,7 @@ class include_assets
 	private $phpbb_root_path;
 
 	/** @var string */
-	private $dir = 'ext/marttiphpbb/calendarinput/styles/all/template/jquery-ui/themes';
+	private $dir = 'ext/marttiphpbb/calendarmono/styles/all/template/jquery-ui/themes';
 
 	/**
 	 * @param settings 	$settings
@@ -68,10 +68,10 @@ class include_assets
 		list($user_lang_short) = explode('-', $user_lang);
 
 		$this->template->assign_vars([
-			'S_CALENDARINPUT_JQUERY_UI_DATPICKER'		=> $this->settings->get_include_jquery_ui_datepicker(),
-			'S_CALENDARINPUT_JQUERY_UI_DATPICKER_I18N'	=> $this->settings->get_include_jquery_ui_datepicker_i18n(),
-			'CALENDARINPUT_DATEPICKER_THEME'			=> $datepicker_theme,
-			'CALENDARINPUT_USER_LANG_SHORT'				=> $user_lang_short,		
+			'S_CALENDARMONO_JQUERY_UI_DATPICKER'		=> $this->settings->get_include_jquery_ui_datepicker(),
+			'S_CALENDARMONO_JQUERY_UI_DATPICKER_I18N'	=> $this->settings->get_include_jquery_ui_datepicker_i18n(),
+			'CALENDARMONO_DATEPICKER_THEME'			=> $datepicker_theme,
+			'CALENDARMONO_USER_LANG_SHORT'				=> $user_lang_short,		
 		]);
 	}
 
@@ -83,7 +83,7 @@ class include_assets
 
 		$this->template->assign_block_vars('datepicker_themes', [
 			'VALUE'			=> 'none',
-			'LANG'			=> $this->language->lang('ACP_CALENDARINPUT_DATEPICKER_THEME_NONE'),
+			'LANG'			=> $this->language->lang('ACP_CALENDARMONO_DATEPICKER_THEME_NONE'),
 			'S_SELECTED'	=> $datepicker_theme == 'none' ? true : false,
 		]);
 
@@ -91,7 +91,7 @@ class include_assets
 
 		if ($scanned === false)
 		{
-			trigger_error(sprintf($this->language->lang('ACP_CALENDARINPUT_DIRECTORY_LIST_FAIL'), $this->dir), E_USER_WARNING);
+			trigger_error(sprintf($this->language->lang('ACP_CALENDARMONO_DIRECTORY_LIST_FAIL'), $this->dir), E_USER_WARNING);
 		}
 
 		$scanned = array_diff($scanned, ['.', '..', '.htaccess']);

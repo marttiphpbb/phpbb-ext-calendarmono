@@ -1,12 +1,12 @@
 <?php
 
 /**
-* phpBB Extension - marttiphpbb calendarinput
+* phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license GNU General Public License, version 2 (GPL-2.0)
 */
 
-namespace marttiphpbb\calendarinput\exception;
+namespace marttiphpbb\calendarmono\exception;
 
 class base extends \Exception
 {
@@ -89,7 +89,7 @@ class base extends \Exception
 		}
 
 		// Add our language file
-		$user->add_lang_ext('marttiphpbb/calendarinput', 'exceptions');
+		$user->add_lang_ext('marttiphpbb/calendarmono', 'exceptions');
 
 		// So the language file is only loaded once
 		$is_loaded = true;

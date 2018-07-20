@@ -1,11 +1,11 @@
 <?php
 /**
-* phpBB Extension - marttiphpbb calendarinput
+* phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license GNU General Public License, version 2 (GPL-2.0)
 */
 
-namespace marttiphpbb\calendarinput\repository;
+namespace marttiphpbb\calendarmono\repository;
 
 use phpbb\config\db_text as config_text;
 
@@ -34,7 +34,7 @@ class settings
 			return $this->local_cache;
 		}
 		
-		$this->local_cache = unserialize($this->config_text->get('marttiphpbb_calendarinput_settings'));
+		$this->local_cache = unserialize($this->config_text->get('marttiphpbb_calendarmono_settings'));
 
 		return $this->local_cache;
 	}
@@ -46,7 +46,7 @@ class settings
 			return;
 		}
 		$this->local_cache = $ary;
-		$this->config_text->set('marttiphpbb_calendarinput_settings', serialize($ary));
+		$this->config_text->set('marttiphpbb_calendarmono_settings', serialize($ary));
 	}
 
 	private function get_asset_enabled(string $name):bool

@@ -1,4 +1,4 @@
-/* Khmer initialisation for the jQuery calendarinput extension. */
+/* Khmer initialisation for the jQuery calendarmono extension. */
 /* Written by Chandara Om (chandara.teacher@gmail.com). */
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {

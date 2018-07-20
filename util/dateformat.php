@@ -1,11 +1,11 @@
 <?php
 /**
-* @package phpBB Extension - marttiphpbb calendarinput
+* @package phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license http://opensource.org/licenses/MIT
 */
 
-namespace marttiphpbb\calendarinput\util;
+namespace marttiphpbb\calendarmono\util;
 
 use phpbb\user;
 use phpbb\language\language;

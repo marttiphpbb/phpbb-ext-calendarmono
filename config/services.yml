@@ -1,6 +1,6 @@
 services:
-    marttiphpbb.calendarinput.main_listener:
-        class: marttiphpbb\calendarinput\event\main_listener
+    marttiphpbb.calendarmono.main_listener:
+        class: marttiphpbb\calendarmono\event\main_listener
         arguments:
             - '@template'
             - '@language'
@@ -8,8 +8,8 @@ services:
         tags:
             - { name: event.listener }
 
-    marttiphpbb.calendarinput.posting_listener:
-        class: marttiphpbb\calendarinput\event\posting_listener
+    marttiphpbb.calendarmono.posting_listener:
+        class: marttiphpbb\calendarmono\event\posting_listener
         arguments:
             - '@auth'
             - '@config'
@@ -18,14 +18,14 @@ services:
             - '@template'
             - '@user'
             - '@language'
-            - '@marttiphpbb.calendarinput.render.include_assets'
-            - '@marttiphpbb.calendarinput.render.input_range'
-            - '@marttiphpbb.calendarinput.render.posting'
+            - '@marttiphpbb.calendarmono.render.include_assets'
+            - '@marttiphpbb.calendarmono.render.input_range'
+            - '@marttiphpbb.calendarmono.render.posting'
         tags:
             - { name: event.listener }
 
-    marttiphpbb.calendarinput.core.event_container:
-        class: marttiphpbb\calendarinput\core\event_container
+    marttiphpbb.calendarmono.core.event_container:
+        class: marttiphpbb\calendarmono\core\event_container
         arguments:
             - '@auth'
             - '@config'
@@ -33,40 +33,40 @@ services:
             - '@dbal.conn'
             - '%tables.topics%'
 
-    marttiphpbb.calendarinput.timeformat:
-        class: marttiphpbb\calendarinput\util\timeformat
+    marttiphpbb.calendarmono.timeformat:
+        class: marttiphpbb\calendarmono\util\timeformat
         arguments:
             - '@user'
 
-    marttiphpbb.calendarinput.render.include_assets:
-        class: marttiphpbb\calendarinput\render\include_assets
+    marttiphpbb.calendarmono.render.include_assets:
+        class: marttiphpbb\calendarmono\render\include_assets
         arguments:
-            - '@marttiphpbb.calendarinput.repository.settings'
+            - '@marttiphpbb.calendarmono.repository.settings'
             - '@template'
             - '@language'
             - '%core.root_path%'
 
-    marttiphpbb.calendarinput.render.input_range:
-        class: marttiphpbb\calendarinput\render\input_range
+    marttiphpbb.calendarmono.render.input_range:
+        class: marttiphpbb\calendarmono\render\input_range
         arguments:
-            - '@marttiphpbb.calendarinput.repository.settings'
+            - '@marttiphpbb.calendarmono.repository.settings'
             - '@template'
 
-    marttiphpbb.calendarinput.render.posting:
-        class: marttiphpbb\calendarinput\render\posting
+    marttiphpbb.calendarmono.render.posting:
+        class: marttiphpbb\calendarmono\render\posting
         arguments:
-            - '@marttiphpbb.calendarinput.repository.settings'
+            - '@marttiphpbb.calendarmono.repository.settings'
             - '@template'
             - '@language'
 
-    marttiphpbb.calendarinput.dateformat:
-        class: marttiphpbb\calendarinput\util\dateformat
+    marttiphpbb.calendarmono.dateformat:
+        class: marttiphpbb\calendarmono\util\dateformat
         arguments:
             - '@user'
             - '@language'
 
-    marttiphpbb.calendarinput.repository.settings:
-        class: marttiphpbb\calendarinput\repository\settings
+    marttiphpbb.calendarmono.repository.settings:
+        class: marttiphpbb\calendarmono\repository\settings
         arguments:
             - '@config_text'
 

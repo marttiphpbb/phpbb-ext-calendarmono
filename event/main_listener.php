@@ -1,17 +1,17 @@
 <?php
 /**
-* phpBB Extension - marttiphpbb calendarinput
+* phpBB Extension - marttiphpbb calendarmono
 * @copyright (c) 2014 - 2018 marttiphpbb <info@martti.be>
 * @license GNU General Public License, version 2 (GPL-2.0)
 */
 
-namespace marttiphpbb\calendarinput\event;
+namespace marttiphpbb\calendarmono\event;
 
 use phpbb\template\template;
 use phpbb\language\language;
 use phpbb\config\config;
 use phpbb\event\data as event;
-use marttiphpbb\calendarinput\render\links;
+use marttiphpbb\calendarmono\render\links;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class main_listener implements EventSubscriberInterface
@@ -50,7 +50,7 @@ class main_listener implements EventSubscriberInterface
 	{
 		$lang_set_ext = $event['lang_set_ext'];
 		$lang_set_ext[] = [
-			'ext_name' => 'marttiphpbb/calendarinput',
+			'ext_name' => 'marttiphpbb/calendarmono',
 			'lang_set' => 'common',
 		];
 		$event['lang_set_ext'] = $lang_set_ext;
