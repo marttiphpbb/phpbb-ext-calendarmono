@@ -38,28 +38,4 @@ class mgr_1 extends \phpbb\db\migration\migration
 			]],
 		];
 	}
-
-	public function update_schema()
-	{
-		return [
-			'add_columns'        => [
-				$this->table_prefix . 'topics'        => [
-					cnst::COLUMN_START  => ['UINT', NULL],
-					cnst::COLUMN_END 	=> ['UINT', NULL],
-				],
-			],
-		];
-	}
-
-	public function revert_schema()
-	{
-		return [
-			'drop_columns'        => [
-				$this->table_prefix . 'topics'        => [
-					cnst::COLUMN_START,
-					cnst::COLUMN_END,
-				],
-			],
-		];
-	}
 }

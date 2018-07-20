@@ -17,18 +17,8 @@ class main_info
 			'filename'	=> '\marttiphpbb\calendarmono\acp\main_module',
 			'title'		=> cnst::L_ACP ,
 			'modes'		=> [
-				'input_range'	=> [
-					'title'	=> cnst::L_ACP . '_INPUT_RANGE',
-					'auth'	=> 'ext_marttiphpbb/calendarmono && acl_a_board',
-					'cat'	=> [cnst::L_ACP],
-				],
-				'input_format'	=> [
-					'title'	=> cnst::L_ACP . '_INPUT_FORMAT',
-					'auth'	=> 'ext_marttiphpbb/calendarmono && acl_a_board',
-					'cat'	=> [cnst::L_ACP],
-				],
-				'input_forums'	=> [
-					'title'	=> cnst::L_ACP . '_INPUT_FORUMS',
+				'tag_rendering'	=> [
+					'title'	=> cnst::L_ACP . '_TAG_RENDERING',
 					'auth'	=> 'ext_marttiphpbb/calendarmono && acl_a_board',
 					'cat'	=> [cnst::L_ACP],
 				],
