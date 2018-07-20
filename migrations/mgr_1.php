@@ -7,8 +7,13 @@
 
 namespace marttiphpbb\calendarmono\migrations;
 
+use marttiphpbb\calendarmono\util\cnst;
+
 class mgr_1 extends \phpbb\db\migration\migration
 {
+
+
+
 	public function update_data()
 	{
 		return [

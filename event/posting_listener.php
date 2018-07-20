@@ -14,6 +14,7 @@ use phpbb\request\request;
 use phpbb\template\template;
 use phpbb\user;
 use phpbb\language\language;
+use marttiphpbb\calendarmono\util\cnst;
 use phpbb\event\data as event;
 
 use marttiphpbb\calendarmono\render\include_assets;

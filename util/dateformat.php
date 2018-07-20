@@ -10,10 +10,6 @@ namespace marttiphpbb\calendarmono\util;
 use phpbb\user;
 use phpbb\language\language;
 
-/*
- * derives a timeformat from the user's dateformat.
- */
-
 class dateformat
 {
 	protected static $translate_ary = [];

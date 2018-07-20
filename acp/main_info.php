@@ -7,28 +7,30 @@
 
 namespace marttiphpbb\calendarmono\acp;
 
+use marttiphpbb\calendarmono\util\cnst;
+
 class main_info
 {
 	function module()
 	{
 		return [
 			'filename'	=> '\marttiphpbb\calendarmono\acp\main_module',
-			'title'		=> 'ACP_CALENDARMONO',
+			'title'		=> cnst::L_ACP ,
 			'modes'		=> [
 				'input_range'	=> [
-					'title'	=> 'ACP_CALENDARMONO_INPUT_RANGE',
+					'title'	=> cnst::L_ACP . '_INPUT_RANGE',
 					'auth'	=> 'ext_marttiphpbb/calendarmono && acl_a_board',
-					'cat'	=> ['ACP_CALENDARMONO'],
+					'cat'	=> [cnst::L_ACP],
 				],
 				'input_format'	=> [
-					'title'	=> 'ACP_CALENDARMONO_INPUT_FORMAT',
+					'title'	=> cnst::L_ACP . '_INPUT_FORMAT',
 					'auth'	=> 'ext_marttiphpbb/calendarmono && acl_a_board',
-					'cat'	=> ['ACP_CALENDARMONO'],
+					'cat'	=> [cnst::L_ACP],
 				],
 				'input_forums'	=> [
-					'title'	=> 'ACP_CALENDARMONO_INPUT_FORUMS',
+					'title'	=> cnst::L_ACP . '_INPUT_FORUMS',
 					'auth'	=> 'ext_marttiphpbb/calendarmono && acl_a_board',
-					'cat'	=> ['ACP_CALENDARMONO'],
+					'cat'	=> [cnst::L_ACP],
 				],
 			],
 		];
