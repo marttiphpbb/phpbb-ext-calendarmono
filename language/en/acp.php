@@ -19,5 +19,12 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, [
 
 	'ACP_MARTTIPHPBB_CALENDARMONO_SETTINGS_SAVED'	=> 'Settings have been saved successfully!',
+	'ACP_MARTTIPHPBB_CALENDARMONO_TAG_IS_PREFIX'
+		=> 'Tag is prefix',
+	'ACP_MARTTIPHPBB_CALENDARMONO_TAG_IS_PREFIX_EXPLAIN'
+		=> 'The date tag will be rendered as prefix or suffix to the topic
+		title according to this setting. Notice that the respective rendering
+		extension needs to be installed, either %$1sTopic Prefix Tags%$2s or
+		%$3sTopic Suffix Tags%$2s',
 
 ]);

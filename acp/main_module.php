@@ -44,11 +44,14 @@ class main_module
 						trigger_error('FORM_INVALID');
 					}
 
+					$config->set(cnst::TAG_IS_PREFIX, $request->variable('tag_is_prefix', 0));
+
+/*
 					$settings->set_lower_limit_days($request->variable('lower_limit_days', 0));
 					$settings->set_upper_limit_days($request->variable('upper_limit_days', 0));
 					$settings->set_min_duration_days($request->variable('min_duration_days', 0));
 					$settings->set_max_duration_days($request->variable('max_duration_days', 0));
-
+*/
 					trigger_error($language->lang(cnst::L_ACP . '_SETTINGS_SAVED') . adm_back_link($this->u_action));
 				}
 

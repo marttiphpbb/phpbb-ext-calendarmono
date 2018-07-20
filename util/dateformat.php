@@ -13,9 +13,7 @@ use phpbb\language\language;
 class dateformat
 {
 	protected static $translate_ary = [];
-
 	protected static $ignore_types = '|aABgGhHisuveOPZcrUDlNwWtLo';
-
 	protected static $transform_types = [
 		'd'	=> 'djSz',
 		'm'	=> 'FmMn',
@@ -23,22 +21,13 @@ class dateformat
 	];
 
 	protected static $template_ary = [];
-
 	protected static $transform_ary = [];
-
 	protected static $type_ary = [];
-
 	protected static $separator = ' - ';
 
-	/* @var user */
 	protected $user;
-
-	/* @var language */
 	protected $language;
 
-	/*
-	 * @param user $user
-	 */
 	public function __construct(user $user, language $language)
 	{
 		$this->user = $user;
@@ -97,12 +86,7 @@ class dateformat
 		}
 	}
 
-	/*
-	 * @param int $start
-	 * @param int $end
-	 * @return string
-	 */
-	public function get_period(int $start, int $end)
+	public function get_period(int $start, int $end):string
 	{
 		$s = $e = [];
 

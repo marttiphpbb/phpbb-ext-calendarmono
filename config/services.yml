@@ -1,26 +1,10 @@
 services:
-    marttiphpbb.calendarmono.main_listener:
-        class: marttiphpbb\calendarmono\event\main_listener
+    marttiphpbb.calendarmono.listener:
+        class: marttiphpbb\calendarmono\event\listener
         arguments:
             - '@template'
             - '@language'
             - '@config'
-        tags:
-            - { name: event.listener }
-
-    marttiphpbb.calendarmono.posting_listener:
-        class: marttiphpbb\calendarmono\event\posting_listener
-        arguments:
-            - '@auth'
-            - '@config'
-            - '@controller.helper'
-            - '@request'
-            - '@template'
-            - '@user'
-            - '@language'
-            - '@marttiphpbb.calendarmono.render.include_assets'
-            - '@marttiphpbb.calendarmono.render.input_range'
-            - '@marttiphpbb.calendarmono.render.posting'
         tags:
             - { name: event.listener }
 
@@ -33,40 +17,14 @@ services:
             - '@dbal.conn'
             - '%tables.topics%'
 
-    marttiphpbb.calendarmono.timeformat:
-        class: marttiphpbb\calendarmono\util\timeformat
-        arguments:
-            - '@user'
-
-    marttiphpbb.calendarmono.render.include_assets:
-        class: marttiphpbb\calendarmono\render\include_assets
-        arguments:
-            - '@marttiphpbb.calendarmono.repository.settings'
-            - '@template'
-            - '@language'
-            - '%core.root_path%'
-
     marttiphpbb.calendarmono.render.input_range:
         class: marttiphpbb\calendarmono\render\input_range
         arguments:
             - '@marttiphpbb.calendarmono.repository.settings'
             - '@template'
 
-    marttiphpbb.calendarmono.render.posting:
-        class: marttiphpbb\calendarmono\render\posting
-        arguments:
-            - '@marttiphpbb.calendarmono.repository.settings'
-            - '@template'
-            - '@language'
-
     marttiphpbb.calendarmono.dateformat:
         class: marttiphpbb\calendarmono\util\dateformat
         arguments:
             - '@user'
             - '@language'
-
-    marttiphpbb.calendarmono.repository.settings:
-        class: marttiphpbb\calendarmono\repository\settings
-        arguments:
-            - '@config_text'
-

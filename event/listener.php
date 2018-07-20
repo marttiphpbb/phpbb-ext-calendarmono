@@ -15,7 +15,7 @@ use marttiphpbb\calendarmono\render\links;
 use marttiphpbb\calendarmono\util\cnst;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class main_listener implements EventSubscriberInterface
+class listener implements EventSubscriberInterface
 {
 	protected $template;
 	protected $language;
@@ -36,16 +36,34 @@ class main_listener implements EventSubscriberInterface
 	{
 		return [
 			'core.user_setup'						=> 'core_user_setup',
-			'marttiphpbb.topicsuffixtags.set_tags'	=> 'set_tags',
+			'marttiphpbb.topicsuffixtags.set_tags'	=> 'set_suffix_tags',
+			'marttiphpbb.topicprefixtags.set_tags'	=> 'set_prefix_tags',
 		];
 	}
 
-	public function set_tags(event $event)
+	public function set_prefix_tags(event $event)
 	{
+		if (!$this->config[cnst::TAG_IS_PREFIX])
+		{
+			return;
+		}
+
 		$tags = $event['tags'];
 		$tags[] = '[ oufti: ' . $event['topic_id'] . ' ' . $event['origin_event_name'] . ' ]';
- 		$event['tags'] = $tags;
- 	}
+		$event['tags'] = $tags;
+	}
+
+	public function set_suffix_tags(event $event)
+	{
+		if ($this->config[cnst::TAG_IS_PREFIX])
+		{
+			return;
+		}
+
+		$tags = $event['tags'];
+
+		$event['tags'] = $tags;
+	}
 
 	public function core_user_setup(event $event)
 	{

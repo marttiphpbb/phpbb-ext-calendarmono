@@ -1,4 +1,4 @@
-# phpBB Extension - marttiphpbb calendarmono
+# phpBB Extension - marttiphpbb Calendar Mono
 
 ## This extension is only in the stage of initial development
 
