@@ -18,7 +18,7 @@ class main_module
 		global $phpbb_container;
 
 		$language = $phpbb_container->get('language');
-		$template = $phpbb_container->get('templated');
+		$template = $phpbb_container->get('template');
 		$config = $phpbb_container->get('config');
 		$request = $phpbb_container->get('request');
 		$phpbb_root_path = $phpbb_container->getParameter('core.root_path');
@@ -26,7 +26,7 @@ class main_module
 		$language->add_lang('acp', cnst::FOLDER);
 		add_form_key(cnst::FOLDER);
 
-		$settings = $phpbb_container->get('marttiphpbb.calendarmono.repository.settings');
+//		$settings = $phpbb_container->get('marttiphpbb.calendarmono.repository.settings');
 
 		switch($mode)
 		{
@@ -34,8 +34,6 @@ class main_module
 
 				$this->tpl_name = 'tag_rendering';
 				$this->page_title = $language->lang(cnst::L_ACP . '_TAG_RENDERING');
-
-				$input_range = $phpbb_container->get('marttiphpbb.calendarmono.render.input_range');
 
 				if ($request->is_set_post('submit'))
 				{
@@ -55,7 +53,9 @@ class main_module
 					trigger_error($language->lang(cnst::L_ACP . '_SETTINGS_SAVED') . adm_back_link($this->u_action));
 				}
 
-				$input_range->assign_template_vars();
+				$template->assign_vars([
+					'TAG_IS_PREFIX'		=> $config[cnst::TAG_IS_PREFIX],
+				]);
 
 			break;
 		}

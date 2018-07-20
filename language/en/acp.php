@@ -24,7 +24,7 @@ $lang = array_merge($lang, [
 	'ACP_MARTTIPHPBB_CALENDARMONO_TAG_IS_PREFIX_EXPLAIN'
 		=> 'The date tag will be rendered as prefix or suffix to the topic
 		title according to this setting. Notice that the respective rendering
-		extension needs to be installed, either %$1sTopic Prefix Tags%$2s or
-		%$3sTopic Suffix Tags%$2s',
+		extension needs to be installed, either %1$sTopic Prefix Tags%2$s or
+		%3$sTopic Suffix Tags%2$s',
 
 ]);

@@ -17,12 +17,6 @@ services:
             - '@dbal.conn'
             - '%tables.topics%'
 
-    marttiphpbb.calendarmono.render.input_range:
-        class: marttiphpbb\calendarmono\render\input_range
-        arguments:
-            - '@marttiphpbb.calendarmono.repository.settings'
-            - '@template'
-
     marttiphpbb.calendarmono.dateformat:
         class: marttiphpbb\calendarmono\util\dateformat
         arguments:
