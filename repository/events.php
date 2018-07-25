@@ -11,7 +11,7 @@ namespace marttiphpbb\calendarmono\core;
 use marttiphpbb\calendarmono\core\timespan;
 use marttiphpbb\calendarmono\core\calendarmono_event;
 
-class calendarmono_event_row
+class events
 {
 	protected $timespan;
 	protected $free_timespans = [];

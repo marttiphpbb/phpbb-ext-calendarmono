@@ -18,24 +18,27 @@ class mgr_1 extends \phpbb\db\migration\migration
 		];
 	}
 
-	public function update_data()
+	public function update_schema()
 	{
 		return [
-			['module.add', [
-				'acp',
-				'ACP_CAT_DOT_MODS',
-				cnst::L_ACP
-			]],
-			['module.add', [
-				'acp',
-				cnst::L_ACP,
-				[
-					'module_basename'	=> '\marttiphpbb\calendarmono\acp\main_module',
-					'modes'				=> [
-						'tag_rendering',
-					],
+			'add_columns'        => [
+				$this->table_prefix . 'topics'        => [
+					cnst::COLUMN_START  => ['UINT', NULL],
+					cnst::COLUMN_END 	=> ['UINT', NULL],
 				],
-			]],
+			],
+		];
+	}
+
+	public function revert_schema()
+	{
+		return [
+			'drop_columns'        => [
+				$this->table_prefix . 'topics' => [
+					cnst::COLUMN_START,
+					cnst::COLUMN_END,
+				],
+			],
 		];
 	}
 }
