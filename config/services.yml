@@ -7,3 +7,8 @@ services:
             - '@content.visibility'
             - '@dbal.conn'
             - '%tables.topics%'
+
+    marttiphpbb.calendarinput.tag_listener:
+        class: marttiphpbb\calendarinput\event\tag_listener
+        tags:
+            - { name: event.listener }
