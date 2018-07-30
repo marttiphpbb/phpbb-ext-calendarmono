@@ -12,49 +12,42 @@ use phpbb\event\data as event;
 use marttiphpbb\calendarmono\util\cnst;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class tag_listener implements EventSubscriberInterface
+class input_listener implements EventSubscriberInterface
 {
 	static public function getSubscribedEvents()
 	{
 		return [
-			'marttiphpbb.calendartag.data'	=> 'marttiphpbb_calendartag_data',
+			'marttiphpbb.calendarmonoinput.tpl_vars'
+				=> ['marttiphpbb_calendarmonoinput_tpl_vars', 100],
 		];
 	}
 
-	public function marttiphpbb_calendartag_data(event $event)
+	public function marttiphpbb_calendarmonoinput_tpl_vars(event $event)
 	{
-		$total = $event['total'];
+		$ext = $event['ext'];
 
-		if ($total)
+		if ($ext)
 		{
 			return;
 		}
 
-		$topic_data = $event['topic_data'];
 		$start_jd = $event['start_jd'];
 		$end_jd = $event['end_jd'];
+		$topic_data = $event['topic_data'];
 
-		if ($start_jd || $end_jd)
-		{
-			return;
-		}
-
-		if (!(isset($topic_data[cnst::COLUMN_START])
+		if (isset($topic_data[cnst::COLUMN_START])
 			&& $topic_data[cnst::COLUMN_START]
 			&& isset($topic_data[cnst::COLUMN_END])
-			&& $topic_data[cnst::COLUMN_END]))
+			&& $topic_data[cnst::COLUMN_END])
 		{
-			return;
+			$start_jd = $topic_data[cnst::COLUMN_START];
+			$end_jd = $topic_data[cnst::COLUMN_END];
 		}
 
-		$start_jd = $topic_data[cnst::COLUMN_START];
-		$end_jd = $topic_data[cnst::COLUMN_END];
-		$total = 1;
-		$index = 1;
+		$ext = cnst::FOLDER;
 
 		$event['start_jd'] = $start_jd;
 		$event['end_jd'] = $end_jd;
-		$event['total'] = $total;
-		$event['index'] = $index;
+		$event['ext'] = $ext;
  	}
 }

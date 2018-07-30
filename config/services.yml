@@ -1,14 +1,19 @@
 services:
-    marttiphpbb.calendarmono:
-        class: marttiphpbb\calendarmono\repository\events
+    marttiphpbb.calendarmono.repo:
+        class: marttiphpbb\calendarmono\service\repo
         arguments:
-            - '@auth'
-            - '@config'
-            - '@content.visibility'
             - '@dbal.conn'
-            - '%tables.topics%'
+            - '@content.visibility'
+            - '@auth'
+            - '@user'
+            - '%tables.topics'
 
-    marttiphpbb.calendarinput.tag_listener:
-        class: marttiphpbb\calendarinput\event\tag_listener
+    marttiphpbb.calendarmono.tag_listener:
+        class: marttiphpbb\calendarmono\event\tag_listener
+        tags:
+            - { name: event.listener }
+
+    marttiphpbb.calendarmono.input_listener:
+        class: marttiphpbb\calendarmono\event\input_listener
         tags:
             - { name: event.listener }
