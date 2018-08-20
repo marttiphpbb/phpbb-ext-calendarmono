@@ -17,7 +17,8 @@ class tag_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return [
-			'marttiphpbb.calendartag.data'	=> 'marttiphpbb_calendartag_data',
+			'marttiphpbb.calendartag.data'
+				=> 'marttiphpbb_calendartag_data',
 		];
 	}
 

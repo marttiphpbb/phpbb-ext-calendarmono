@@ -16,6 +16,7 @@ use marttiphpbb\calendarmono\util\cnst;
 class repo
 {
 	protected $db;
+	protected $content_visibility;
 	protected $auth;
 	protected $user;
 	protected $topics_table;
@@ -29,30 +30,51 @@ class repo
 	)
 	{
 		$this->db = $db;
-		$this->content_visibility;
+		$this->content_visibility = $content_visibility;
 		$this->auth = $auth;
 		$this->user = $user;
 		$this->topics_table = $topics_table;
 	}
 
-	public function get_events_by_topic(int $topic_id):array
+	// to remove
+	public function get_by_topics(array $topic_ids):array
 	{
-
-
-
-	}
-
-	public function get_all_for_period(int $start_jd, int $end_jd):array
-	{
-		$ary = [];
+		$events = [];
 
 		$forum_ids = array_keys($this->auth->acl_getf('f_read', true));
 
 		$sql = 'select t.topic_id, t.forum_id, t.topic_reported, t.topic_title,
-			t.' . cnst::COLUMN_START . ', t.' . cnst::COLUMN_END . '
+			t.' . cnst::COLUMN_START . ' as start_jd, t.' . cnst::COLUMN_END . ' as end_jd
 			from ' . $this->topics_table . ' t
-			where ( t.' . cnst::COLUMN_START . ' <= ' . $end_jd . '
-				and t.' . cnst::COLUMN_END . ' >= ' . $start_jd . ' )
+			where (t.' . cnst::COLUMN_START . ' <= ' . $end_jd . '
+				and t.' . cnst::COLUMN_END . ' >= ' . $start_jd . ')
+				and ' . $this->db->sql_in_set('t.topic_id', $topic_ids, false, true) . '
+				and ' . $this->content_visibility->get_forums_visibility_sql('topic', $forum_ids, 't.') . '
+				and ' . $this->db->sql_in_set('t.topic_type', [POST_NORMAL, POST_STICKY]) . '
+			order by t.' . cnst::COLUMN_START;
+		$result = $this->db->sql_query($sql);
+
+		while ($row = $this->db->sql_fetchrow($result))
+		{
+			$events[$row[$topic_id]] = $row;
+		}
+
+		$this->db->sql_freeresult($result);
+
+		return $events;
+	}
+
+	public function get_all_for_period(int $start_jd, int $end_jd):array
+	{
+		$events = [];
+
+		$forum_ids = array_keys($this->auth->acl_getf('f_read', true));
+
+		$sql = 'select t.topic_id, t.forum_id, t.topic_reported, t.topic_title,
+			t.' . cnst::COLUMN_START . ' as start_jd, t.' . cnst::COLUMN_END . ' as end_jd
+			from ' . $this->topics_table . ' t
+			where (t.' . cnst::COLUMN_START . ' <= ' . $end_jd . '
+				and t.' . cnst::COLUMN_END . ' >= ' . $start_jd . ')
 				and ' . $this->db->sql_in_set('t.forum_id', $forum_ids, false, true) . '
 				and ' . $this->content_visibility->get_forums_visibility_sql('topic', $forum_ids, 't.') . '
 				and ' . $this->db->sql_in_set('t.topic_type', [POST_NORMAL, POST_STICKY]) . '
@@ -61,25 +83,11 @@ class repo
 
 		while ($row = $this->db->sql_fetchrow($result))
 		{
-			if (!isset($ary[$row['topic_id']]))
-			{
-				$ary[$row['topic_id']] = [
-					'data'	=> [
-						'forum_id'			=> $row['forum_id'],
-						'topic_reported'	=> $row['topic_reported'],
-						'topic_title'		=> $row['topic_title'],
-					],
-				];
-			}
-
-			$ary[$row['topic_id']]['events'][] = [
-				'start_jd'	=> $row[cnst::COLUMN_START],
-				'end_jd'	=> $row[cnst::COLUMN_END],
-			];
+			$events[$row[$topic_id]] = $row;
 		}
 
 		$this->db->sql_freeresult($result);
 
-		return $ary;
+		return $events;
 	}
 }
