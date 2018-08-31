@@ -36,41 +36,13 @@ class repo
 		$this->topics_table = $topics_table;
 	}
 
-	// to remove
-	public function get_by_topics(array $topic_ids):array
-	{
-		$events = [];
-
-		$forum_ids = array_keys($this->auth->acl_getf('f_read', true));
-
-		$sql = 'select t.topic_id, t.forum_id, t.topic_reported, t.topic_title,
-			t.' . cnst::COLUMN_START . ' as start_jd, t.' . cnst::COLUMN_END . ' as end_jd
-			from ' . $this->topics_table . ' t
-			where (t.' . cnst::COLUMN_START . ' <= ' . $end_jd . '
-				and t.' . cnst::COLUMN_END . ' >= ' . $start_jd . ')
-				and ' . $this->db->sql_in_set('t.topic_id', $topic_ids, false, true) . '
-				and ' . $this->content_visibility->get_forums_visibility_sql('topic', $forum_ids, 't.') . '
-				and ' . $this->db->sql_in_set('t.topic_type', [POST_NORMAL, POST_STICKY]) . '
-			order by t.' . cnst::COLUMN_START;
-		$result = $this->db->sql_query($sql);
-
-		while ($row = $this->db->sql_fetchrow($result))
-		{
-			$events[$row[$topic_id]] = $row;
-		}
-
-		$this->db->sql_freeresult($result);
-
-		return $events;
-	}
-
 	public function get_all_for_period(int $start_jd, int $end_jd):array
 	{
 		$events = [];
 
 		$forum_ids = array_keys($this->auth->acl_getf('f_read', true));
 
-		$sql = 'select t.topic_id, t.forum_id, t.topic_reported, t.topic_title,
+		$sql = 'select t.topic_id, t.forum_id, t.topic_title,
 			t.' . cnst::COLUMN_START . ' as start_jd, t.' . cnst::COLUMN_END . ' as end_jd
 			from ' . $this->topics_table . ' t
 			where (t.' . cnst::COLUMN_START . ' <= ' . $end_jd . '
@@ -83,7 +55,7 @@ class repo
 
 		while ($row = $this->db->sql_fetchrow($result))
 		{
-			$events[$row[$topic_id]] = $row;
+			$events[$row['topic_id']] = $row;
 		}
 
 		$this->db->sql_freeresult($result);

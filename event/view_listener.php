@@ -36,8 +36,6 @@ class view_listener implements EventSubscriberInterface
 		$end_jd = $event['end_jd'];
 		$events = $event['events'];
 
-		error_log('osdfqosqdfjqsofjqs');
-
 		$events = array_merge($events, $this->repo->get_all_for_period($start_jd, $end_jd));
 
 		$event['events'] = $events;
