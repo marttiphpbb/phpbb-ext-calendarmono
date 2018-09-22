@@ -2,7 +2,7 @@
 
 ## Description
 
-This phpBB extension is part of the Calendar Extension Set and provides storage for a single Calendar Events for each topic.
+This phpBB extension is part of the [Calendar Extension Set](doc/calendar-set.md) and provides storage for a single Calendar Events for each topic.
 
 ## Requirements
 

@@ -27,6 +27,13 @@ The following categories exist:
 
 * [Calendar Auto Archive](https://github.com/marttiphpbb/phpbb-ext-calendarautoarchive) (not ready yet) This extension works together with the [Archive Forum](https://github.com/marttiphpbb/phpbb-ext-archiveforum) extension to move topics automatically to the archive after the Calendar event.
 
+## Helper Extensions
+
+* [Menu Items](https://github.com/marttiphpbb/phpbb-ext-menuitems)
+* [JQuery UI Datepicker](https://github.com/marttiphpbb/phpbb-ext-jqueryuidatepicker)
+* [Topic Prefix Tags](https://github.com/marttiphpbb/phpbb-ext-topicprefixtags)
+* [Topic Suffix Tags](https://github.com/marttiphpbb/phpbb-ext-topicsuffixtags)
+
 ## Overview of Interdependencies
 
 ![Calender Set Interdependencies](calendar_set.png)
