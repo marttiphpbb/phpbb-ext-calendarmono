@@ -1,6 +1,8 @@
 # phpBB Extension - marttiphpbb Calendar Mono
 
-## This extension is only in the stage of initial development
+## Description
+
+This phpBB extension is part of the Calendar Extension Set and provides storage for a single Calendar Events for each topic.
 
 ## Requirements
 
@@ -27,3 +29,7 @@ You can install this on the latest release of phpBB 3.2 by following the steps b
 ## License
 
 [GPL-2.0](license.txt)
+
+## Screenshots
+
+This extension doesn't produce anything visual directly.
