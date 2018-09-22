@@ -1,5 +1,7 @@
 # phpBB Extension - marttiphpbb Calendar Mono
 
+[Topic on phpbb.com](https://www.phpbb.com/community/viewtopic.php?f=456&t=2487151)
+
 ## Description
 
 This phpBB extension is part of the [Calendar Extension Set](doc/calendar-set.md) and provides storage for a single Calendar Events for each topic.
