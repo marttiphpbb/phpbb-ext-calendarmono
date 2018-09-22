@@ -3,11 +3,13 @@
 ## Description
 
 This phpBB extension is part of the [Calendar Extension Set](doc/calendar-set.md) and provides storage for a single Calendar Events for each topic.
+Internally the dates are stored as [Julian Day Count](http://php.net/manual/en/ref.calendar.php).
 
 ## Requirements
 
 * phpBB 3.2.1+
 * PHP 7.1+
+* PHP calendar extension (PHP compiled with --enable-calendar)
 
 ## Quick Install
 
