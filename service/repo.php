@@ -51,6 +51,31 @@ class repo
 				and ' . $this->content_visibility->get_forums_visibility_sql('topic', $forum_ids, 't.') . '
 				and ' . $this->db->sql_in_set('t.topic_type', [POST_NORMAL, POST_STICKY]) . '
 			order by t.' . cnst::COLUMN_START;
+
+		$result = $this->db->sql_query($sql);
+
+		while ($row = $this->db->sql_fetchrow($result))
+		{
+			$events[$row['topic_id']] = $row;
+		}
+
+		$this->db->sql_freeresult($result);
+
+		return $events;
+	}
+
+	public function get_all_after(int $ref_jd, int $ignore_forum_id):array
+	{
+		$events = [];
+
+		$forum_ids = array_keys($this->auth->acl_getf('f_read', true));
+
+		$sql = 'select t.topic_id, t.forum_id, t.topic_title,
+			t.' . cnst::COLUMN_START . ' as start_jd, t.' . cnst::COLUMN_END . ' as end_jd
+			from ' . $this->topics_table . ' t
+			where t.' . cnst::COLUMN_END . ' > ' . $ref_jd;
+		$sql .= $ignore_forum_id ? ' and t.forum_id <> ' . $ignore_forum_id : '';
+
 		$result = $this->db->sql_query($sql);
 
 		while ($row = $this->db->sql_fetchrow($result))
