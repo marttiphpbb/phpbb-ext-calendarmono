@@ -24,3 +24,10 @@ services:
             - '@marttiphpbb.calendarmono.repo'
         tags:
             - { name: event.listener }
+
+    marttiphpbb.calendarmono.calendarautoarchive_listener:
+        class: marttiphpbb\calendarmono\event\calendarautoarchive_listener
+        arguments:
+            - '@marttiphpbb.calendarmono.repo'
+        tags:
+            - { name: event.listener }

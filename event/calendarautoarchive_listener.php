@@ -13,7 +13,7 @@ use marttiphpbb\calendarmono\service\repo;
 use marttiphpbb\calendarmono\util\cnst;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class view_listener implements EventSubscriberInterface
+class calendarautoarchive_listener implements EventSubscriberInterface
 {
 	protected $repo;
 
@@ -25,18 +25,18 @@ class view_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return [
-			'marttiphpbb.calendar.archive'
-				=> 'marttiphpbb_calendar_archive',
+			'marttiphpbb.calendarautoarchive.get_events'
+				=> 'get_events',
 		];
 	}
 
-	public function marttiphpbb_calendar_archive(event $event)
+	public function get_events(event $event)
 	{
 		$ref_jd = $event['ref_jd'];
 		$ignore_forum_id = $event['ignore_forum_id'];
 		$events = $event['events'];
 
-		$events = array_merge($events, $this->repo->get_all_after($ref_jd, $ignore_forum_id));
+		$events = array_merge($events, $this->repo->get_all_before($ref_jd, $ignore_forum_id));
 
 		$event['events'] = $events;
  	}
