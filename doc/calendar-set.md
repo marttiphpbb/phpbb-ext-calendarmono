@@ -25,7 +25,7 @@ The following categories exist:
 
 ## Archive
 
-* [Calendar Auto Archive](https://github.com/marttiphpbb/phpbb-ext-calendarautoarchive) (not ready yet) This extension works together with the [Archive Forum](https://github.com/marttiphpbb/phpbb-ext-archiveforum) extension to move topics automatically to the archive after the Calendar event.
+* [Calendar Auto Archive](https://github.com/marttiphpbb/phpbb-ext-calendarautoarchive) This extension works together with the [Archive Forum](https://github.com/marttiphpbb/phpbb-ext-archiveforum) extension to move topics automatically to the archive after the Calendar event.
 
 ## Helper Extensions
 
