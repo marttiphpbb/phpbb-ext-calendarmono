@@ -92,7 +92,6 @@ class repo
 				and t.' . cnst::COLUMN_END . ' >= ' . $start_jd . ')
 				and ' . $this->db->sql_in_set('t.forum_id', $forum_ids, false, true) . '
 				and ' . $this->content_visibility->get_forums_visibility_sql('topic', $forum_ids, 't.') . '
-				and ' . $this->db->sql_in_set('t.topic_type', [POST_NORMAL, POST_STICKY]) . '
 			order by t.' . cnst::COLUMN_START;
 
 		$result = $this->db->sql_query($sql);
@@ -111,7 +110,7 @@ class repo
 	{
 		$events = [];
 
-		$forum_ids = array_keys($this->auth->acl_getf('f_read', true));
+		// not used: $forum_ids = array_keys($this->auth->acl_getf('f_read', true));
 
 		$sql = 'select t.topic_id, t.forum_id, t.topic_title,
 			t.' . cnst::COLUMN_START . ' as start_jd, t.' . cnst::COLUMN_END . ' as end_jd
