@@ -21,7 +21,7 @@ The following categories exist:
 ## Visualization
 
 * [Calendar Month View](https://github.com/marttiphpbb/phpbb-ext-calendarmonthview)
-* [Calendar Continuous View](https://github.com/marttiphpbb/phpbb-ext-calendarcontinuousview) (not ready yet) A Calendar view to visualize an extended period.
+* [Calendar Table View](https://github.com/marttiphpbb/phpbb-ext-calendartableview) A Calendar view to visualize an extended period.
 
 ## Archive
 
