@@ -1,6 +1,6 @@
 # The marttiphpbb Calendar Extension Set
 
-The Calendar Extension Set is a series of interdependant phpBB extensions that provide together a topic based Calendar. The functionality was split up in multiple phpBB extension for maximum flexibility and maintainability. The Calendar is optimized for multiple day events and does not store time-of-the-day.
+The Calendar Extension Set is a series of interdependant phpBB extensions that provide together a topic based Calendar. The functionality was split up in multiple phpBB extensions for maximum flexibility and maintainability. The Calendar is optimized for multiple day events and does not store time-of-the-day.
 
 The following categories exist:
 
@@ -22,6 +22,7 @@ The following categories exist:
 
 * [Calendar Month View](https://github.com/marttiphpbb/phpbb-ext-calendarmonthview)
 * [Calendar Table View](https://github.com/marttiphpbb/phpbb-ext-calendartableview) A Calendar view to visualize an extended period.
+* [Calendar Inline View](https://github.com/marttiphpbb/phpbb-ext-calendarinlineview)
 
 ## Archive
 
