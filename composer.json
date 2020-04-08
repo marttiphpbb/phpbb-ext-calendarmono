@@ -6,7 +6,7 @@
 	"version": "0.5.0",
 	"time": "2019-07-02",
 	"keywords": ["phpbb", "extension", "calendar", "mono"],
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [{
 			"name": "martti",
 			"email": "info@martti.be",
@@ -19,7 +19,7 @@
 	"extra": {
 		"display-name": "Calendar Mono",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.1"
+			"phpbb/phpbb": ">=3.3.0"
 		},
 		"version-check": {
 			"host": "marttiphpbb.github.io",

@@ -9,7 +9,7 @@ Internally the dates are stored as [Julian Day Count](http://php.net/manual/en/r
 
 ## Requirements
 
-* phpBB 3.2.1+
+* phpBB 3.3+
 * PHP 7.1+
 * PHP calendar extension (PHP compiled with --enable-calendar)
 
