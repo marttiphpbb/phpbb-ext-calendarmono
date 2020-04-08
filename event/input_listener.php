@@ -14,7 +14,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class input_listener implements EventSubscriberInterface
 {
-	static public function getSubscribedEvents()
+	static public function getSubscribedEvents():array
 	{
 		return [
 			'marttiphpbb.calendarmonoinput.tpl_vars'
@@ -22,7 +22,7 @@ class input_listener implements EventSubscriberInterface
 		];
 	}
 
-	public function marttiphpbb_calendarmonoinput_tpl_vars(event $event)
+	public function marttiphpbb_calendarmonoinput_tpl_vars(event $event):void
 	{
 		$ext = $event['ext'];
 

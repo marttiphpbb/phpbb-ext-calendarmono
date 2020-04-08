@@ -1,7 +1,7 @@
 {
 	"name": "marttiphpbb/calendarmono",
 	"type": "phpbb-extension",
-	"description": "Calendar Mono Extension for phpBB 3.2",
+	"description": "Calendar Mono Extension for phpBB 3.3",
 	"homepage": "https://github.com/marttiphpbb/phpbb-ext-calendarmono",
 	"version": "0.5.0",
 	"time": "2019-07-02",

@@ -10,7 +10,6 @@ namespace marttiphpbb\calendarmono\event;
 use phpbb\event\data as event;
 
 use marttiphpbb\calendarmono\service\repo;
-use marttiphpbb\calendarmono\util\cnst;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class view_listener implements EventSubscriberInterface
@@ -22,7 +21,7 @@ class view_listener implements EventSubscriberInterface
 		$this->repo = $repo;
 	}
 
-	static public function getSubscribedEvents()
+	static public function getSubscribedEvents():array
 	{
 		return [
 			'marttiphpbb.calendar.view'
@@ -32,7 +31,7 @@ class view_listener implements EventSubscriberInterface
 		];
 	}
 
-	public function marttiphpbb_calendar_view(event $event)
+	public function marttiphpbb_calendar_view(event $event):void
 	{
 		$start_jd = $event['start_jd'];
 		$end_jd = $event['end_jd'];
@@ -44,7 +43,7 @@ class view_listener implements EventSubscriberInterface
 		$event['events'] = $events;
 	 }
 
-	 public function marttiphpbb_calendar_view_forum(event $event)
+	 public function marttiphpbb_calendar_view_forum(event $event):void
 	 {
 		 $start_jd = $event['start_jd'];
 		 $end_jd = $event['end_jd'];

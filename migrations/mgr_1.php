@@ -11,14 +11,14 @@ use marttiphpbb\calendarmono\util\cnst;
 
 class mgr_1 extends \phpbb\db\migration\migration
 {
-	static public function depends_on()
+	static public function depends_on():array
 	{
 		return [
 			'\phpbb\db\migration\data\v330\v330',
 		];
 	}
 
-	public function update_schema()
+	public function update_schema():array
 	{
 		return [
 			'add_columns'        => [
@@ -30,7 +30,7 @@ class mgr_1 extends \phpbb\db\migration\migration
 		];
 	}
 
-	public function revert_schema()
+	public function revert_schema():array
 	{
 		return [
 			'drop_columns'        => [
